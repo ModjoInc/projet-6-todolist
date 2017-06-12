@@ -14,7 +14,9 @@
         <h2>A FAIRE</h2>
         <form class="" action="" method="post">
           <label><input type="checkbox" name="checkB" id="">tache1</label>
-
+        <div class="">
+          <?php include "contenu.php" ?>
+        </div>
 
         </form>
         <button type="button" name="enregistrer">ENREGISTRER</button>
@@ -25,7 +27,7 @@
 
         </div>
       </div>
-       <form class="ajoutTache" action="" method="post">
+       <form class="ajoutTache" action="assets/formulaire.php" method="post">
 
          <label for="tache">Ajouter une Tâche</label><input type="text" name="tache" id="tache">
          <button type="button" name="ajout">Ajouter</button>
