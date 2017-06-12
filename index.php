@@ -7,6 +7,8 @@
   </head>
   <body>
     <header></header>
+    <?php include "assets/formulaire.php" ?>
+
       <section>
 
 
@@ -15,7 +17,9 @@
         <form class="" action="" method="post">
           <label><input type="checkbox" name="checkB" id="">tache1</label>
         <div class="">
-          <?php include "assets/contenu.php" ?>
+         <?php
+          include "assets/contenu.php" 
+         ?>
         </div>
 
         </form>
@@ -27,10 +31,11 @@
 
         </div>
       </div>
-       <form class="ajoutTache" action="assets/formulaire.php" method="post">
+       <form class="ajoutTache" action="assets/formulaire.php" method="post" id="formAjout">
 
          <label for="tache">Ajouter une Tâche</label><input type="text" name="tache" id="tache">
-         <button type="button" name="ajout">Ajouter</button>
+         <button type="submit" form="formAjout" name="ajout" >Ajouter</button>
+
        </form>
 
       </section>
