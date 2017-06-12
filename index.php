@@ -15,7 +15,7 @@
         <form class="" action="" method="post">
           <label><input type="checkbox" name="checkB" id="">tache1</label>
         <div class="">
-          <?php include "contenu.php" ?>
+          <?php include "assets/contenu.php" ?>
         </div>
 
         </form>
