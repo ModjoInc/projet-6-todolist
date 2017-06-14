@@ -6,38 +6,50 @@ function sanit($input) {
   return $input;
 }
 
-$tache = $_POST["tache"];
-$tachePropre = sanit($tache);
+$message1 = "";
+$aFaire = "";
+$tacheOK="";
 
-if (isset($tache)) {
+$fichier = 'todo.json';
+$fichierJson = file_get_contents($fichier);
+$tabTache = json_decode($fichierJson, true);
+
+if (isset($_POST["ajout"])) {
+
+  $tache = $_POST["tache"];
+  $tachePropre = sanit($tache);
+
   if (!empty ($tache)) {
-
-  //ouverture et ecriture JSON
-    $fichier = 'todo.json';
-    $tabTache =[];
-    $fichierJson = file_get_contents($fichier);
-
-    $tabTache = json_decode($fichierJson);
-
-    /*foreach ($variable as $key => $value) {
-      if $value==
-      # code...
-    }*/
-
-    array_push($tabTache, $tachePropre, $id);
-    print_r($tabTache);
-    $update = json_encode($tabTache);
-
+    //ouverture et ecriture JSON
+    $tabTache[] =["id" => count($tabTache), "tache" => $tachePropre, "fait" => false];
+    //update fichier json
+    $update = json_encode($tabTache, JSON_PRETTY_PRINT);
     file_put_contents($fichier, $update);
+    // actualisation fichier json
+    $fichierJson = file_get_contents($fichier);
+    $tabTache = json_decode($fichierJson, true);
 
     $message1= "Tâche ajoutée";
+    } else {
+      echo "en attente";
+    }
+}
 
-  } else {
+if (isset($_POST["enregistrer"])) {
+    $fait = $_POST["aFaire"];
+    // On prend l'id et on modifie la valeur de "done"
+  	foreach ($fait as $key => $value) {
+  		$tabTache[$value] = ["id" => $value, "tache" => $tabTache[$value]["tache"], "fait" => true];
+    }
+  	//On encode en json et on récrit le fichier
+  	$tabTache = json_encode($tabTache, JSON_PRETTY_PRINT);
+  	file_put_contents($fichier, $tabTache);
 
-    $message1= "Veuillez ajouter une tâche";
-
-  }
-
+  	// On va rechercher le fichier pour qu'il s'actualise //
+  	$fichier_json = file_get_contents($fichier);
+  	$tabTache = json_decode($fichier_json, true);
 
 }
- ?>
+
+
+?>

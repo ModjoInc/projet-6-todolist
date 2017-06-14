@@ -1,3 +1,17 @@
 [
-
+    {
+        "id": "0",
+        "tache": "faire le m\u00e9nage",
+        "fait": true
+    },
+    {
+        "id": "1",
+        "tache": "faire la vaisselle",
+        "fait": true
+    },
+    {
+        "id": "2",
+        "tache": "faire le m\u00e9nage",
+        "fait": true
+    }
 ]
