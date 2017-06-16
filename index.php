@@ -1,5 +1,4 @@
-<?php require "assets/formulaire.php" ?>
-<?php require "assets/contenu.php" ?>
+<?php require("lib/formulaire.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -12,34 +11,25 @@
       <section>
         <div class="todo">
           <h2>A FAIRE</h2>
-          <form class="enreTache" action="" method="post" id="formEnr">
-           <div><?php
-             echo $message1;
-             ?>
-           </div>
-           <div>
-             <ul>
-             <?php echo $aFaire; ?>
+           <ul id="todoList">
            </ul>
-           </div>
-          <button type="submit" name="enregistrer" value="update">ENREGISTRER</button>
-        </form>
-      </div>
+        </div>
+        <div class="archive">
+          <h2>ARCHIVES</h2>
+          <div class="archList">
 
-      <div class="archive">
-        <h2>ARCHIVES</h2>
-        <div class="archList">
-          <ul>
-         <?php echo $tacheOK; ?>
-       </ul>
         </div>
       </div>
-       <form class="ajoutTache" action="" method="post" id="formAjout">
-         <label for="tache">Ajouter une Tâche</label><input type="textarea" name="tache" id="tache">
-         <button type="submit" form="formAjout" name="ajout" value="ajouter" >Ajouter</button>
+      <form class="ajoutTache" action="" method="post" id="formAjout">
+        <fieldset>
+          <legend>Ajouter une tâche</legend>
+          <input type="textarea" name="tache" id="tache">
+          <button type="submit" form="formAjout" name="ajout" id="ajouter" value="ajouter" >Ajouter</button>
+        </fieldset>
        </form>
-      </section>
+
+     </section>
     <footer></footer>
-    <!--<script src="lib/app.js"></script>-->
+    <script src="assets/app.js"></script>
   </body>
 </html>

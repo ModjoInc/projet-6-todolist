@@ -11,7 +11,7 @@ $aFaire = "";
 $tacheOK="";
 $annu = "";
 
-$fichier = 'todo.json';
+$fichier = 'assets/todo.json';
 $fichierJson = file_get_contents($fichier);
 $tabTache = json_decode($fichierJson, true);
 $date = date('d/m/Y H:i:s ', time());
