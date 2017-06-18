@@ -1,11 +1,12 @@
 <?php
+//fonction de sanitisation
 function sanit($input) {
   $input = filter_var($input, FILTER_SANITIZE_STRING);
   $input = htmlspecialchars($input);
   $input = ltrim($input, " \t.");
   return $input;
 }
-
+//déclaration des variables
 $message1 = "";
 $aFaire = "";
 $tacheOK="";
@@ -16,6 +17,7 @@ $fichierJson = file_get_contents($fichier);
 $tabTache = json_decode($fichierJson, true);
 $date = date('d/m/Y H:i:s ', time());
 
+// ajout de ma tâche
 if (isset($_POST["ajout"])) {
 
   $tache = $_POST["tache"];
@@ -34,10 +36,10 @@ if (isset($_POST["ajout"])) {
     $message1= "Tâche ajoutée";
     }
 }
-
+//passage de la tâche en statut FAIT
 if (isset($_POST["enregistrer"])) {
     $fait = $_POST["aFaire"];
-    // On prend l'id et on modifie la valeur de "done"
+    // On prend l'id et on modifie la valeur de "fait"
   	foreach ($fait as $key => $value) {
   		$tabTache[$value] = ["id" => $value, "tache" => $tabTache[$value]["tache"], "fait" => true];
     }
@@ -50,7 +52,7 @@ if (isset($_POST["enregistrer"])) {
   	$tabTache = json_decode($fichier_json, true);
 }
 
-//annuler tâche
+//annuler tâche ********ne fonctionne pas**********
 /*
 if (isset($_POST["annuler"])) {
   $annu = $_POST["aFaire"];

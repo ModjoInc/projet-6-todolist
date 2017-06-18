@@ -1,17 +1,18 @@
+//fonction de définition de la tâche et du statu
 function Todo(tache) {
     this.tache = tache;
     this.fait = false;
 }
-
+//définition de l'objet todos en tableau vide
 let todos = new Array();
 window.onload = init;
-
+//définition de la fonction d'initialisation
 function init() {
   let submitButton = document.getElementById('ajouter');
   submitButton.addEventListener("click", getFormData);
   getTodoData();
 }
-
+//définition de la fonction qui va aller chercher le contenu du fichier Json
 function getTodoData() {
   const req = new XMLHttpRequest();
   req.open('GET', 'assets/todo.json');
@@ -28,7 +29,7 @@ function getTodoData() {
     };
   req.send();
 }
-
+//définition de la fonction qui va parser le contenu du Json
 function parseTodoItems(todoJSON) {
   if (todoJSON == null || todoJSON.trim() == ""){
     return;
@@ -45,7 +46,7 @@ function parseTodoItems(todoJSON) {
   console.log("Tableau des tâches : ");
   console.log(todos);
 }
-
+//ajout de l'ensemble des tâches à la page sous format de liste
 function addTodosToPage() {
   let ul = document.getElementById("todoList");
   let listFragment = document.createDocumentFragment();
@@ -56,14 +57,14 @@ function addTodosToPage() {
   }
   ul.appendChild(listFragment);
 }
-
+//ajout de la nouvelle tâche
 function addTodoToPage(todoItem) {
   let ul = document.getElementById('todoList');
   let li = createNewTodo(todoItem);
   ul.appendChild(li);
   document.forms[0].reset();
 }
-
+//création d'un nouvel élément liés à la nouvelle tâche selon le statut
 function createNewTodo(todoItem) {
   let li = document.createElement("li");
   let spanTodo = document.createElement("span");
@@ -82,7 +83,7 @@ function createNewTodo(todoItem) {
     li.appendChild(spanTodo);
   return li;
 }
-
+//ajout au fichier Json
 function getFormData() {
   let tache = document.getElementById('tache').value;
   if (checkInputText(tache, "Veuillez ajouter une tâche ;)")) {
@@ -92,7 +93,7 @@ function getFormData() {
   let todoItem = new Todo(tache);
   todos.push(todoItem);
 }
-
+//validation du champs ajouter
 function checkInputText(value, msg) {
   if (value == null || value == "") {
     alert(msg);
