@@ -13,25 +13,23 @@
         <div class="todo">
           <h2>A FAIRE</h2>
           <form class="enreTache" action="" method="post" id="formEnr">
-           <div><?php
-             echo $message1;
-             ?>
+           <div>
+             <?php echo $message1; ?>
            </div>
            <div>
              <ul>
-             <?php echo $aFaire; ?>
-           </ul>
+               <?php echo $aFaire; ?>
+             </ul>
            </div>
           <button type="submit" name="enregistrer" value="update">ENREGISTRER</button>
         </form>
       </div>
-
       <div class="archive">
         <h2>ARCHIVES</h2>
         <div class="archList">
           <ul>
-         <?php echo $tacheOK; ?>
-       </ul>
+           <?php echo $tacheOK; ?>
+          </ul>
         </div>
       </div>
        <form class="ajoutTache" action="" method="post" id="formAjout">

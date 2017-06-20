@@ -6,6 +6,7 @@ function sanit($input) {
   $input = ltrim($input, " \t.");
   return $input;
 }
+
 //déclaration des variables
 $message1 = "";
 $aFaire = "";
@@ -18,6 +19,7 @@ $tabTache = json_decode($fichierJson, true);
 $date = date('d/m/Y H:i:s ', time());
 
 // ajout de ma tâche
+
 if (isset($_POST["ajout"])) {
 
   $tache = $_POST["tache"];
@@ -25,13 +27,16 @@ if (isset($_POST["ajout"])) {
 
   if (!empty ($tache)) {
     //ouverture et ecriture JSON
+
     $tabTache[] =["date" => $date, "id" => count($tabTache), "tache" => $tachePropre, "fait" => false];
+
     //update fichier json
     $update = json_encode($tabTache, JSON_PRETTY_PRINT);
     file_put_contents($fichier, $update);
     // actualisation fichier json
     $fichierJson = file_get_contents($fichier);
     $tabTache = json_decode($fichierJson, true);
+
 
     $message1= "Tâche ajoutée";
     }
@@ -66,4 +71,5 @@ if (isset($_POST["annuler"])) {
   $fichier_json = file_get_contents($fichier);
   $tabTache = json_decode($fichier_json, true);
 }*/
+
 ?>
