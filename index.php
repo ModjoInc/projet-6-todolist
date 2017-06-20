@@ -1,5 +1,5 @@
-<?php require "assets/formulaire.php" ?>
-<?php require "assets/contenu.php" ?>
+<?php require "lib/formulaire.php" ?>
+<?php require "lib/contenu.php" ?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -40,6 +40,6 @@
        </form>
       </section>
     <footer></footer>
-    <!--<script src="lib/app.js"></script>-->
+    <!--<script src="assets/app.js"></script>-->
   </body>
 </html>
