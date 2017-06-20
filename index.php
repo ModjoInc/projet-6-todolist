@@ -38,6 +38,6 @@
        </form>
       </section>
     <footer></footer>
-    <!--<script src="lib/app.js"></script>-->
+    <!--<script src="assets/app.js"></script>-->
   </body>
 </html>

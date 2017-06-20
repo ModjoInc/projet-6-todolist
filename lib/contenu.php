@@ -1,12 +1,10 @@
 <?php
 
-//boucle affichant les tâches selon leur statut
 for($i = 0; $i < count($tabTache); ++$i) {
     if ($tabTache[$i]["fait"]){
-    	$tacheOK .= '<li><del> ' . $tabTache[$i]["tache"] . '</del></li>';
+    	$tacheOK .= '<li><label class="' . $tabTache[$i] . '"><input name="tacheOk[]" type="checkbox" value="'. $tabTache[$i]["id"] . '">'. '<del> ' . $tabTache[$i]["date"]. $tabTache[$i]["tache"] . '</del></label></li>';
     } else {
-    	$aFaire .= '<li><label class=""><input name="aFaire[]" type="checkbox" value="'. $tabTache[$i]["id"] . '"> ' . $tabTache[$i]["tache"] . '</label></li>';
+    	$aFaire .= '<li><label class="' . $tabTache[$i] . '"><input name="aFaire[]" type="checkbox" value="'. $tabTache[$i]["id"] . '"> ' . $tabTache[$i]["date"]. $tabTache[$i]["tache"] . '</label></li>';
     }
 }
-
- ?>
+?>

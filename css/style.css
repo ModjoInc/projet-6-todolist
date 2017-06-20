@@ -1,8 +1,36 @@
 body {
   background-color:#b8b8b8 ;
+  font-family: arial, sans-serif;
+}
 
+legend {
+   font-size: 2em;
+   padding-bottom: 5px;
 }
 
 li {
   list-style: none;
+}
+
+ul#todoList {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+ul#todoList li {
+    padding: 5px;
+    margin: 5px;
+    background-color: #ededed;
+    border: 2px  #ededed;
+}
+
+ul#todoList li span.pasFait {
+    margin-right: 10px;
+    background-color: #FF9999;
+}
+
+ul#todoList li span.fait {
+    margin-right: 10px;
+    background-color: #80CC80;
 }

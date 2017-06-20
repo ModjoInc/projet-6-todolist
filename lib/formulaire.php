@@ -6,16 +6,20 @@ function sanit($input) {
   $input = ltrim($input, " \t.");
   return $input;
 }
-//définition des variables
+
+//déclaration des variables
 $message1 = "";
 $aFaire = "";
 $tacheOK="";
+$annu = "";
 
-$fichier = 'todo.json';
+$fichier = 'assets/todo.json';
 $fichierJson = file_get_contents($fichier);
 $tabTache = json_decode($fichierJson, true);
+$date = date('d/m/Y H:i:s ', time());
 
-//ajout de la tâche au fichier Json
+// ajout de ma tâche
+
 if (isset($_POST["ajout"])) {
 
   $tache = $_POST["tache"];
@@ -23,35 +27,49 @@ if (isset($_POST["ajout"])) {
 
   if (!empty ($tache)) {
     //ouverture et ecriture JSON
-    $tabTache[] =["id" => count($tabTache), "tache" => $tachePropre, "fait" => false];
+
+    $tabTache[] =["date" => $date, "id" => count($tabTache), "tache" => $tachePropre, "fait" => false];
+
     //update fichier json
     $update = json_encode($tabTache, JSON_PRETTY_PRINT);
     file_put_contents($fichier, $update);
     // actualisation fichier json
     $fichierJson = file_get_contents($fichier);
     $tabTache = json_decode($fichierJson, true);
-    //affichage d'un message selon le statut d'avancement
+
+
     $message1= "Tâche ajoutée";
-    } else {
-      echo "en attente";
     }
 }
-//ajout de la fonction d'enregistrement et modification du statut FAIT
+//passage de la tâche en statut FAIT
 if (isset($_POST["enregistrer"])) {
     $fait = $_POST["aFaire"];
-    // parcourir le tableau des données et selon l'id correspondant modifier la valeur de FAIT
+    // On prend l'id et on modifie la valeur de "fait"
   	foreach ($fait as $key => $value) {
   		$tabTache[$value] = ["id" => $value, "tache" => $tabTache[$value]["tache"], "fait" => true];
     }
-  	//encodage du nouveau statut et écriture dans le fichier Json
+  	//On encode en json et on récrit le fichier
   	$tabTache = json_encode($tabTache, JSON_PRETTY_PRINT);
   	file_put_contents($fichier, $tabTache);
 
-  	// actualisation du fichier Json
+
   	$fichier_json = file_get_contents($fichier);
   	$tabTache = json_decode($fichier_json, true);
-
 }
 
+//annuler tâche ********ne fonctionne pas**********
+/*
+if (isset($_POST["annuler"])) {
+  $annu = $_POST["aFaire"];
+  foreach ($annu as $key => $value) {
+    $tabTache[$value] = ["id" => $value, "tache" => $tabTache[$value]["tache"], "fait" => false];
+  }
+
+  $tabTache = json_encode($tabTache, JSON_PRETTY_PRINT);
+  file_put_contents($fichier, $tabTache);
+
+  $fichier_json = file_get_contents($fichier);
+  $tabTache = json_decode($fichier_json, true);
+}*/
 
 ?>
