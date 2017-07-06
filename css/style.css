@@ -1,36 +1,71 @@
+@media (min-width: 200px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "td"
+    "ar"
+    "fo";
+  }
+}
+
+@media (min-width: 700px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas:
+    ". td ."
+    ". ar ."
+    ". fo .";
+  }
+}
+
 body {
-  background-color:#b8b8b8 ;
+  background-color:#000 ;
   font-family: arial, sans-serif;
 }
 
-legend {
-   font-size: 2em;
-   padding-bottom: 5px;
+header, h2 {
+  text-align: center;
+  color: #f3efe0;
+}
+
+button {
+  margin: 5px;
+  padding: 5px;
+}
+
+.todo {
+  grid-area: td;
+  color:#f3efe0;
+  background-color: #cba135;
+  padding: 10px;
+}
+
+.archive {
+  grid-area: ar;
+  background-color: #cba135;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.formulaire {
+  grid-area: fo;
+  color: #f3efe0;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #cba135;
+  padding: 10px;
 }
 
 li {
+  font-size: 1.3em;
+  padding: 5px;
+  text-decoration: none;
   list-style: none;
+
 }
 
-ul#todoList {
-    list-style-type: none;
-    margin-left: 0px;
-    padding-left: 0px;
-}
-
-ul#todoList li {
-    padding: 5px;
-    margin: 5px;
-    background-color: #ededed;
-    border: 2px  #ededed;
-}
-
-ul#todoList li span.pasFait {
-    margin-right: 10px;
-    background-color: #FF9999;
-}
-
-ul#todoList li span.fait {
-    margin-right: 10px;
-    background-color: #80CC80;
+.rec {
+  text-align: center;
 }
